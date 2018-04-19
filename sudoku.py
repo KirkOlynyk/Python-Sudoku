@@ -205,6 +205,10 @@ Zero row representation
         'get the full dlx matrix for Sudoku puzzles of this order'
         return [self._get_bit_column_row(i) for i in range(self.N6)]
 
+class MultipleSolutionsException(Exception):
+    def __init__(self):
+        pass
+
 # pylint: disable=too-many-locals
 def solve_zero_rows(zero_rows: Puzzle) -> None:
     ''''
@@ -212,6 +216,16 @@ def solve_zero_rows(zero_rows: Puzzle) -> None:
     '''
     import math
     order = int(math.sqrt(len(zero_rows)))
+    if order == 4:
+        labels = ['X',
+                  '0', '1', '2', '3',
+                  '4', '5', '6', '7',
+                  '8', '9', 'A', 'B',
+                  'C', 'D', 'E', 'F']
+    elif order == 5:
+        labels = [c for (c, _) in _order5_isomorphisms]
+    else:
+        labels = ['X', '1', '2', '3', '4', '5', '6', '7', '8', '9']
     sudoku = Sudoku(order, zero_rows)
     set_bits = sudoku.get_set_bits()
     column_names = list(range(sudoku.n_dlx_columns))
@@ -245,9 +259,10 @@ def solve_zero_rows(zero_rows: Puzzle) -> None:
         Each time this is called it adds a value to
         \'solution\' (the Sudoku solution matrix)
         '''
+        
         global COUNT                # pylint: disable=global-statement
-        if COUNT != 0:
-            raise ValueError("More than one solution")
+        if COUNT > 0:
+            raise MultipleSolutionsException()
         COUNT += 1
         for names in name_lists:
             names.sort()
@@ -259,21 +274,14 @@ def solve_zero_rows(zero_rows: Puzzle) -> None:
             i_col = j_e - N2 * i_row
             i_value = j_r - N2 * (i_row + N2 * 1)
             solution[i_row][i_col] = i_value + 1
+        draw_sudoku(zero_rows, solution, order, labels)
+    try:
+        root.search(bcaster=bcaster)
+    except MultipleSolutionsException:
+        pass
 
-    root.search(bcaster=bcaster)
-    if order == 4:
-        labels = ['X',
-                  '0', '1', '2', '3',
-                  '4', '5', '6', '7',
-                  '8', '9', 'A', 'B',
-                  'C', 'D', 'E', 'F']
-    elif order == 5:
-        labels = [c for (c, _) in _order5_isomorphisms]
-    else:
-        labels = ['X', '1', '2', '3', '4', '5', '6', '7', '8', '9']
     if COUNT == 0:
-        print("No Solution")
-    draw_sudoku(zero_rows, solution, order, labels)
+        print("No Solutions")
 
 # pylint: disable=invalid-name
 _order_indices = {c : v for c, v in _order_isomorphism}
