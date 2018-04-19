@@ -1,7 +1,22 @@
 # input3.yaml
 [   
-    # Mepham diabolical
     {
+        # https://www.websudoku.com
+        # Evil Puzzle 6,787,955.644
+        dot_rows: [
+            '4...5..98',
+            '.1382....',
+            '.........',
+            '.24...8..',
+            '8...7...6',
+            '..7...53.',
+            '.........',
+            '....4536.',
+            '64..8...7'
+        ]
+    },
+    {
+        # Mepham diabolical
         dot_rows: [
             '.9.7..86.',
             '.31..5.2.',
@@ -13,10 +28,9 @@
             '.2.6..35.',
             '.54..8.7.',
         ]
-    }
-    ,
-    # Shortz 301
+    },
     {
+        # Shortz 301
         dot_rows: [
             '.395.....',
             '..18.9.7.',
@@ -28,8 +42,7 @@
             '.1..9...5',
             '.....1..8',
         ]
-    }
-    ,
+    },
     {
         dot_rows: [
             '.6..3.78.',
@@ -42,8 +55,7 @@
             '......5..',
             '1..4.....',
         ]
-    }
-    ,
+    },
     {
         dot_rows: [
             '....1....',
@@ -57,7 +69,6 @@
             '.....64.5',
         ]
     },
-
     {
         dot_rows: [
             '...2...59',
@@ -71,9 +82,9 @@
             '.14......',
         ]
     },
-    # http://www.sudoku-puzzles-online.com/alphadoku/play-25x25-sudoku-save.php
-    # Symmetric puzzle Level Expert No. 8056
     {
+        # http://www.sudoku-puzzles-online.com/alphadoku/play-25x25-sudoku-save.php
+        # Symmetric puzzle Level Expert No. 8056
         dot_rows: [
             'C..G.XUB.Q.V.I..W.NLS.DF.',
             'AHI.B.E...K...GF..J....R.',
@@ -105,8 +116,7 @@
             '.F....H..DQ...J...I.E.WGV',
             '.LT.XIP.C..N.U.M.QKW.Y..S'
         ]
-    }
-    ,
+    },
     {
         dot_rows: [
             '..UHG.XJ.T.D.PIM...C.S.YF',
@@ -140,7 +150,6 @@
             'GU.K.P...XER.I.W.HQ.TAV..'
         ]
     },
-
     {
         dot_rows: [
             '....7.1..',
@@ -156,7 +165,6 @@
             '1....9.6.'
         ]
     },
-
     {
         # http://www.sudoku-puzzles-online.com
         # Puzzle hexadoku leve Expert No 1000
@@ -182,7 +190,6 @@
             '..0CF...8...E...'
         ]
     },
-
     {
         # http://www.sudoku-puzzles-online.com
         # Puzzle hexadoku leve Expert No 500
@@ -208,7 +215,6 @@
             '.2.865.DE......0'
         ]
     },
-
     {
         # http://www.sudoku-puzzles-online.com
         # Puzzle hexadoku level Expert No 330
@@ -236,6 +242,7 @@
     }
     ,
     {
+        # This does not have a solution!
         dot_rows: [
             'D4....A.B.......',
             'A.....B9.32.C...',
@@ -258,7 +265,6 @@
             '.......09..1E...'
         ]
     },
-
     {
         dot_rows: [
             'D.B5.2.04.76....',
@@ -292,7 +298,6 @@
             '.5.....43'
         ]
     },
-
     {
         dot_rows: [
             '...9.6...',
@@ -306,7 +311,6 @@
             '5..1..9.3'
         ]
     },
-
     {
         dot_rows: [
             '6.5...1.9',
@@ -320,7 +324,6 @@
             '9.8...5.4'
         ]
     },
-
     {
         dot_rows: [
             '.7....4..',
@@ -334,7 +337,6 @@
             '..69....8'
         ]
     },
-
     {
         dot_rows: [
             '.5......6',
