@@ -278,7 +278,7 @@ def solve_zero_rows(zero_rows: Puzzle) -> None:
     try:
         root.search(bcaster=bcaster)
     except MultipleSolutionsException:
-        pass
+        print("More that one solution has been found .. printing one")
 
     if COUNT == 0:
         print("No Solutions")
