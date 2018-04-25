@@ -88,23 +88,28 @@ COLUMN_NAME = int                           # pylint: disable=invalid-name
 
 COUNT = 0 # count of the number of Sudoku solutions found
 
-_order_isomorphism = [                          # pylint: disable=invalid-name
-    ('.', 0),
-    ('1', 1), ('2', 2), ('3', 3),
-    ('4', 4), ('5', 5), ('6', 6),
-    ('7', 7), ('8', 8), ('9', 9),
-]
-_order4_isomorphism = [                         # pylint: disable=invalid-name
-    ('.', 0),
-    ('0', 1), ('1', 2), ('2', 3), ('3', 4),
-    ('4', 5), ('5', 6), ('6', 7), ('7', 8),
-    ('8', 9), ('9', 10), ('A', 11), ('B', 12),
-    ('C', 13), ('D', 14), ('E', 15), ('F', 16)
-]
-TEMP = ['.']
-TEMP.extend([chr(i) for i in range(ord('A'), ord('Z'))])
+def _get_chars(ch0: str, ch1: str) -> List[str]:
+    return [chr(i) for i in range(ord(ch0), ord(ch1)+1)]
+
+def _get_chars_ex(*args):
+    ans = ['.']
+    for ch0, ch1 in args:
+        ans.extend(_get_chars(ch0, ch1))
+    return ans
+
+def _get_isomorphisms(*args):
+    ans = _get_chars_ex(*args)
+    return [(c, i) for i, c in enumerate(ans)]
+
 # pylint: disable=invalid-name
-_order5_isomorphisms = [(c, i) for (i, c) in enumerate(TEMP)]
+_order3_isomorphisms = _get_isomorphisms(('1', '9'))
+_order4_isomorphisms = _get_isomorphisms(('0', '9'), ('A', 'F'))
+_order5_isomorphisms = _get_isomorphisms(('A', 'Y'))
+_order6_isomorphisms = _get_isomorphisms(('0', '9'), ('A', 'Z'))
+_order3_indices = {c : v for c, v in _order3_isomorphisms}
+_order4_indices = {c : v for c, v in _order4_isomorphisms}
+_order5_indices = {c : v for c, v in _order5_isomorphisms}
+_order6_indices = {c : v for c, v in _order6_isomorphisms}
 
 class Sudoku(object):
     '''
@@ -143,11 +148,12 @@ Zero row representation
             ]
     '''
     def __init__(self, order: Order, puzzle: Puzzle) -> None:
-        self.N = order                      # pylint: disable=invalid-name
-        self.N2 = order * order             # pylint: disable=invalid-name
-        self.N4 = self.N2 * self.N2         # pylint: disable=invalid-name
+        # pylint: disable=invalid-name
+        self.N = order
+        self.N2 = order * order
+        self.N4 = self.N2 * self.N2
         self.n_dlx_columns = 4 * self.N4
-        self.N6 = self.N2 * self.N4         # pylint: disable=invalid-name
+        self.N6 = self.N2 * self.N4
         self._check_puzzle(puzzle)
 
     # pylint: disable=invalid-name
@@ -206,10 +212,11 @@ Zero row representation
         return [self._get_bit_column_row(i) for i in range(self.N6)]
 
 class MultipleSolutionsException(Exception):
+    'Exception thrown when more than one solution is encountered'
     def __init__(self):
-        pass
+        Exception.__init__(self)
 
-# pylint: disable=too-many-locals
+# pylint: disable=too-many-locals, too-many-branches
 def solve_zero_rows(zero_rows: Puzzle) -> None:
     ''''
     Solving a Sudoku puzzle represented as a zero base list of integer lists
@@ -224,6 +231,8 @@ def solve_zero_rows(zero_rows: Puzzle) -> None:
                   'C', 'D', 'E', 'F']
     elif order == 5:
         labels = [c for (c, _) in _order5_isomorphisms]
+    elif order == 6:
+        labels = [c for (c, _) in _order6_isomorphisms]
     else:
         labels = ['X', '1', '2', '3', '4', '5', '6', '7', '8', '9']
     sudoku = Sudoku(order, zero_rows)
@@ -259,7 +268,7 @@ def solve_zero_rows(zero_rows: Puzzle) -> None:
         Each time this is called it adds a value to
         \'solution\' (the Sudoku solution matrix)
         '''
-        
+
         global COUNT                # pylint: disable=global-statement
         if COUNT > 0:
             raise MultipleSolutionsException()
@@ -275,6 +284,7 @@ def solve_zero_rows(zero_rows: Puzzle) -> None:
             i_value = j_r - N2 * (i_row + N2 * 1)
             solution[i_row][i_col] = i_value + 1
         draw_sudoku(zero_rows, solution, order, labels)
+
     try:
         root.search(bcaster=bcaster)
     except MultipleSolutionsException:
@@ -283,22 +293,15 @@ def solve_zero_rows(zero_rows: Puzzle) -> None:
     if COUNT == 0:
         print("No Solutions")
 
-# pylint: disable=invalid-name
-_order_indices = {c : v for c, v in _order_isomorphism}
-# pylint: disable=invalid-name
-_order_chars = {v : c for c, v in _order_isomorphism}
-# pylint: disable=invalid-name
-_order4_indices = {c : v for c, v in _order4_isomorphism}
-# pylint: disable=invalid-name
-_order5_indices = {c : v for c, v in _order5_isomorphisms}
-
 def _get_indices(order: int):
     if order == 4:
         return _order4_indices
     elif order == 5:
         return _order5_indices
+    elif order == 6:
+        return _order6_indices
     else:
-        return _order_indices
+        return _order3_indices
 
 def _dot_rows_to_zero_rows(dot_rows: List[str]) -> List[List[int]]:
     """
@@ -361,13 +364,10 @@ def solve_dot_rows(dot_rows: List[str]) -> None:
     zero_rows = _dot_rows_to_zero_rows(dot_rows=dot_rows)
     solve_zero_rows(zero_rows)
 
-@click.command()
-@click.option("--input", type=str, help='path to input yaml file', prompt=True)
-@click.option("--puzzle", type=int, help='zero based puzzle number', prompt=True)
-def main(input: str, puzzle: int) -> None:
+def work(path: str, puzzle: int) -> None:
     'Loads puzzles from a YAML file and solve the puzzle of your choice'
     import yaml
-    with open(input, 'r') as fobj:
+    with open(path, 'r') as fobj:
         ans = yaml.load(fobj)
     try:
         dot_rows = ans[puzzle]['dot_rows']
@@ -375,6 +375,13 @@ def main(input: str, puzzle: int) -> None:
     except KeyError:
         zero_rows = ans[puzzle]['zero_rows']
         solve_zero_rows(zero_rows=zero_rows)
+
+@click.command()
+@click.option("--path", type=str, help='path to input yaml file', prompt=True)
+@click.option("--puzzle", type=int, help='zero based puzzle number', prompt=True)
+def main(path: str, puzzle: int) -> None:
+    'main entry point'
+    work(path, puzzle)
 
 if __name__ == '__main__':
     # main() # pylint: disable=no-value-for-parameter
