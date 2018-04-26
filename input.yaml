@@ -1,6 +1,51 @@
 # input3.yaml
 [   
     {
+        # Sudoku with 18 clues and two-way symmetry
+        # https://www.flickr.com/photos/npcomplete/2691474926
+        dot_rows: [
+            '...21....',
+            '..73.....',
+            '.58......',
+            '43.......',
+            '2.......8',
+            '.......76',
+            '......25.',
+            '.....73..',
+            '....98...'
+        ]
+    },
+    {
+        # 17 Clue Sudoku
+        # flicr.com/photos/npcomplete/2599486458
+        dot_rows: [
+            '........1',
+            '.......23',
+            '..4..5...',
+            '...1.....',
+            '....3.6..',
+            '..7...58.',
+            '....67...',
+            '.1...4...',
+            '52.......'
+        ]
+    },
+    {
+        # A Sudoku designed to work against the brute force algorithm
+        dot_rows: [
+            '.........',
+            '.....3.85',
+            '..1.2....',
+            '...5.7...',
+            '..4...1..',
+            '.9.......',
+            '5......73',
+            '..2.1....',
+            '....4...9'
+        ]
+
+    },
+    {
         # www.sudoku-puzzles.merschat.com
         # Lex Luthor level
         dot_rows: [
