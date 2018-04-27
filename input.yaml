@@ -1,23 +1,27 @@
 # input3.yaml
 [   
     {
-        # Sudoku with 18 clues and two-way symmetry
-        # https://www.flickr.com/photos/npcomplete/2691474926
+        comments: [
+            "17 Clue",
+            "minimumsudoku.com"
+        ],
         dot_rows: [
-            '...21....',
-            '..73.....',
-            '.58......',
-            '43.......',
-            '2.......8',
-            '.......76',
-            '......25.',
-            '.....73..',
-            '....98...'
+            '....5..74',
+            '8.1......',
+            '.........',
+            '.7.24....',
+            '6.....1..',
+            '.........',
+            '2..1.63..',
+            '.4.....2.',
+            '...8.....'
         ]
     },
     {
-        # 17 Clue Sudoku
-        # flicr.com/photos/npcomplete/2599486458
+        comments: [
+            "17 Clue Sudoku",
+            "This is the minimum number of clues needed"
+        ],
         dot_rows: [
             '........1',
             '.......23',
@@ -31,7 +35,60 @@
         ]
     },
     {
-        # A Sudoku designed to work against the brute force algorithm
+        comments: [
+            "AI Escargot",
+            "World's hardest Sudoku puzzle"
+        ],
+        dot_rows: [
+            '1....7.9.',
+            '.3..2...8',
+            '..96..5..',
+            '..53..9..',
+            '.1..8...2',
+            '6....4...',
+            '3......1.',
+            '.4......7',
+            '..7...3..'
+        ]
+    },
+    {
+        comments: [
+            "Taken from www.7sudoku.com"
+        ],
+        dot_rows: [
+            '..2....4.',
+            '....3....',
+            '7.5.9....',
+            '...9.7...',
+            '.....2..8',
+            '..9..56.3',
+            '4..5..31.',
+            '.9.......',
+            '.8..4.2.6'
+        ]
+
+    },
+    {
+        comments: [
+            "Sudoku with 18 clues and two-way symmetry",
+            "https://www.flickr.com/photos/npcomplete/2691474926"
+        ],
+        dot_rows: [
+            '...21....',
+            '..73.....',
+            '.58......',
+            '43.......',
+            '2.......8',
+            '.......76',
+            '......25.',
+            '.....73..',
+            '....98...'
+        ]
+    },
+    {
+        comments: [
+            "A Sudoku designed to work against the brute force algorithm"
+        ],
         dot_rows: [
             '.........',
             '.....3.85',
@@ -43,11 +100,13 @@
             '..2.1....',
             '....4...9'
         ]
-
     },
     {
-        # www.sudoku-puzzles.merschat.com
-        # Lex Luthor level
+        comments: [
+
+            "www.sudoku-puzzles.merschat.com",
+            "Lex Luthor level"
+        ],
         dot_rows: [
             '..................E......',
             'C........................',
@@ -81,8 +140,10 @@
         ]
     },
     {
-        # sudoku-puzzle-online.com/alphadoku/play-25x25
-        # Symmetric puzzle Level Expert No. 48
+        comments: [
+            "sudoku-puzzle-online.com/alphadoku/play-25x25",
+            "Symmetric puzzle Level Expert No. 48"
+        ],
         dot_rows: [
             '.VDC..U....K..RT....QBG..',
             '.R..F.G.QPS.YE.V...IXL..H',
@@ -113,10 +174,12 @@
             'Y.R..HSBE......CFQUW..D.L',
             'S..VWQ...G.MT.HDN.L.O..I.',
             '..LOB....VJ..Y....R..FCE.'
-        ]
+        ],
     },
     {
-        # planetsudoku.com Puzzle # 3113649
+        comments: [
+            "planetsudoku.com Puzzle # 3113649"
+        ],
         dot_rows: [
             '...0..F..2..D...',
             'E..............1',
@@ -140,7 +203,9 @@
         ]
     },
     {
-        # http://sudoku.ws/extreme-20.htm
+        comments: [
+            "http://sudoku.ws/extreme-20.htm"
+        ],
         dot_rows: [
             '6......4.',
             '..5..2..7',
@@ -154,7 +219,9 @@
         ]
     },
     {
-        # http://sudoku.ws/hard-20.htm
+        comments: [
+            "http://sudoku.ws/hard-20.htm"
+        ],
         dot_rows: [
             '1...7..3.',
             '83.6.....',
@@ -168,8 +235,10 @@
         ]
     },
     {
-        # https://www.websudoku.com
-        # Evil Puzzle 6,787,955.644
+        comments: [
+            "https://www.websudoku.com",
+            "Evil Puzzle 6,787,955.644"
+        ],
         dot_rows: [
             '4...5..98',
             '.1382....',
@@ -183,7 +252,9 @@
         ]
     },
     {
-        # Mepham diabolical
+        comments: [
+            "Mepham diabolical"
+        ],
         dot_rows: [
             '.9.7..86.',
             '.31..5.2.',
@@ -197,7 +268,9 @@
         ]
     },
     {
-        # Shortz 301
+        comments: [
+            "Shortz 301"
+        ],
         dot_rows: [
             '.395.....',
             '..18.9.7.',
@@ -250,8 +323,10 @@
         ]
     },
     {
-        # http://www.sudoku-puzzles-online.com/alphadoku/play-25x25-sudoku-save.php
-        # Symmetric puzzle Level Expert No. 8056
+        comments: [
+            "http://www.sudoku-puzzles-online.com/alphadoku/play-25x25-sudoku-save.php",
+            "Symmetric puzzle Level Expert No. 8056"
+        ],
         dot_rows: [
             'C..G.XUB.Q.V.I..W.NLS.DF.',
             'AHI.B.E...K...GF..J....R.',
@@ -333,8 +408,10 @@
         ]
     },
     {
-        # http://www.sudoku-puzzles-online.com
-        # Puzzle hexadoku leve Expert No 1000
+        comments: [
+            "http://www.sudoku-puzzles-online.com",
+            "Puzzle hexadoku level Expert No 1000"
+        ],
         dot_rows: [
             '...6.B.....A.F1.',
             '.3...1.9C..B....',
@@ -358,8 +435,10 @@
         ]
     },
     {
-        # http://www.sudoku-puzzles-online.com
-        # Puzzle hexadoku leve Expert No 500
+        comments: [
+            "http://www.sudoku-puzzles-online.com",
+            "Puzzle hexadoku leve Expert No 500"
+        ],
         dot_rows: [
             '..2A..D.F0B..8..',
             '.83.5F.....9....',
@@ -383,8 +462,10 @@
         ]
     },
     {
-        # http://www.sudoku-puzzles-online.com
-        # Puzzle hexadoku level Expert No 330
+        comments: [
+            "http://www.sudoku-puzzles-online.com",
+            "Puzzle hexadoku level Expert No 330"
+        ],
         dot_rows: [
             '..6.9AB...DF.354',
             '.32..4..08.971B.',
@@ -409,7 +490,9 @@
     }
     ,
     {
-        # This does not have a solution!
+        comments: [
+            "This does not have a solution!"
+        ],
         dot_rows: [
             'D4....A.B.......',
             'A.....B9.32.C...',
