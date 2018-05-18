@@ -1,0 +1,11 @@
+{
+    "compilerOptions": {
+        "target": "es5",
+        "lib": ["es6"]
+    },
+    "files" : [
+        "index.ts",
+        "dlx.ts",
+        "sudoku.ts"
+    ]
+}
