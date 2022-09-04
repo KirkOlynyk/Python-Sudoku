@@ -2,7 +2,7 @@
 sudoku.py
 
     1. Turn the Sudoku puzzle into an exact cover problem
-       by representing the contraints on the solution as
+       by representing the constraints on the solution as
        a list of bit lists
 
     2. Call Knuth's Dancing Links algorithm to solve the exact
@@ -46,7 +46,7 @@ Each time we put a value in a cell we are putting that value in a row
 column and box. We allocate one bit (1 or 0) for each of the N^4
 cells. Once a cell has a value written in it, that particular bit is set.
 We allocate one cell for each of the N^4 row-value combinations. When
-we write a value in a row we set that paticular bit. The same goes
+we write a value in a row we set that particular bit. The same goes
 for the N^4 value-column and N^4 value-box combinations. This means
 that each row of the cover matrix has 4 * (N^4) bits. Each time a cell
 is given a value 4 bits in a row are set corresponding to the cell,
@@ -60,7 +60,7 @@ the cells have been given a value initially. Such a puzzle would
 have a large number of solutions since there are no constraints.
 Each initial cell value implies that one of the rows must be
 in the solution. It also means that any row that shares a bit
-in the same columns of these inital rows must be elimiated
+in the same columns of these initial rows must be eliminated
 from consideration. This sounds hard to do but fortunately the Dancing
 Links algorithm includes a function called \'cover\' that accomplishes
 this \'pruning\' of the cover matrix. So here is the procedure
@@ -118,13 +118,13 @@ Sudoku class
 Constructor Arguments:
 
     order: 1, 2, 3, ...
-    puzzle: zero-based representation of the intial state
+    puzzle: zero-based representation of the initial state
             of the Sudoku puzzle
 
 The zero based representation is a list of rows where each row
 is a list of integers where zero represents an empty cell while
 the numbers 1 .. order^2 represent specified initial cell values.
-For exampl, suppose we have a 4 x 4 sudoku matrix, then the
+For example, suppose we have a 4 x 4 sudoku matrix, then the
 integers representing the legal values are 1, 2, 3, 4 and
 0 represents a blank cell in the Sudoku puzzle
 
@@ -309,7 +309,7 @@ Transforms a \'dot based\' representation of a Sudoku puzzle
 into a 'zero based' representation.
 
 To understand this, consider the following 4 x 4 Sudoku puzzle that
-would look somthing like the following
+would look something like the following
 
                 +--------+
                 |1  | 4  |
