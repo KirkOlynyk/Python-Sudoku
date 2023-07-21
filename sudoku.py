@@ -368,7 +368,7 @@ def work(path: str, puzzle: int) -> None:
     'Loads puzzles from a YAML file and solve the puzzle of your choice'
     import yaml
     with open(path, 'r') as fobj:
-        ans = yaml.load(fobj)
+        ans = yaml.safe_load(fobj)
     try:
         dot_rows = ans[puzzle]['dot_rows']
         solve_dot_rows(dot_rows=dot_rows)
@@ -384,5 +384,5 @@ def main(path: str, puzzle: int) -> None:
     work(path, puzzle)
 
 if __name__ == '__main__':
-    # main() # pylint: disable=no-value-for-parameter
+    # pylint: disable=no-value-for-parameter
     main()

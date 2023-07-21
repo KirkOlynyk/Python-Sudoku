@@ -3,7 +3,7 @@ For drawing the solution to a Sudoku puzzle
 """
 
 import yaml
-from graphics import Point, Rectangle, Text, Point, Line, color_rgb, GraphWin
+from graphics import GraphicsError, Point, Rectangle, Text, Point, Line, color_rgb, GraphWin
 
 # globals #
 
@@ -108,10 +108,14 @@ def draw_sudoku(puzzle, solution, order, labels): # pylint: disable=too-many-loc
         _ = win.getMouse()
         win.close()
 
-    draw_puzzle_numbers()
-    draw_solution_numbers()
-    draw_grid()
-    close_window_on_mouse_click()
+    try:
+        draw_puzzle_numbers()
+        draw_solution_numbers()
+        draw_grid()
+        close_window_on_mouse_click()
+    except GraphicsError:
+        # Catch the error when the window is closed
+        pass
 
     # click on the window to close it
 def test():

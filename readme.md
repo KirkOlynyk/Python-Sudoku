@@ -7,7 +7,7 @@ project was built using Python 3.6.0 :: Anaconda 4.3.0 (64-bit).
 
 To demonstrate how it works just type
 ```
-python .\sudoku.py --input .\input.yaml --puzzle 0
+python .\sudoku.py --path .\input.yaml --puzzle 0
 ```
 
 To see how Sudoku puzzles are represented look at the examples in input.yaml.
